@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* ************************************************************************************************
  *                                                                                                *
  * Please read the following tutorial before implementing tasks:                                   *
@@ -28,8 +29,18 @@
  *      .catch((error) => console.log(error.message)) // 'Error: Wrong parameter is passed!
  *                                                    //  Ask her again.';
  */
-function willYouMarryMe(/* isPositiveAnswer */) {
-  throw new Error('Not implemented');
+function willYouMarryMe(isPositiveAnswer) {
+  const yes = 'Hooray!!! She said "Yes"!';
+  const no = 'Oh no, she said "No".';
+  const wrong = 'Wrong parameter is passed! Ask her again.';
+
+  return new Promise((resolved, rejected) => {
+    if (typeof isPositiveAnswer !== 'boolean') {
+      rejected(new Error(wrong));
+    } else {
+      resolved(isPositiveAnswer ? yes : no);
+    }
+  });
 }
 
 
